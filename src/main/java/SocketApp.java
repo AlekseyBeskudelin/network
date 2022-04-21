@@ -7,7 +7,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class SocketApp {
-    public static void main (String [] args) throws IOException {
+    public static void main (String [] args){
         int port = 8085;
         String host = "localhost";
         try(Socket clientSocket = new Socket(host, port);
@@ -16,8 +16,10 @@ public class SocketApp {
                 out.println("Netology");
                 String resp = in.readLine();
                 System.out.println(resp);
+                clientSocket.close();
+        }catch (IOException e){
+            e.printStackTrace();
         }
-
 
     }
 }
